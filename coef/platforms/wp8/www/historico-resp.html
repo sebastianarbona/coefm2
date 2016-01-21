@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Responsable-COEF Mobile</title>
+		
+		<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.css" />
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"/>
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="css/bud-green.theme.css"/>
+		<link href="css/reset.css" rel="stylesheet"/>
+		<link href="css/layout.css" rel="stylesheet"/>
+		<link href="css/components.css" rel="stylesheet"/>
+		<link href="css/plugins.css" rel="stylesheet"/>
+		<link href="css/antique-brass.theme.css" rel="stylesheet" id="theme"/>
+		<link href="css/custom.css" rel="stylesheet"/>
+		<link href="css/animate.min.css" rel="stylesheet"/>
+		
+		<script src="cordova.js"><!--  --></script>
+		<script src="js/jquery-1.9.1.min.js"><!--  --></script>
+		<script src="js/jquery.mobile-1.4.5.min.js"><!--  --></script>
+	    <script src="js/bootstrap.min.js"><!--  --></script>
+	    <script src="js/bootbox.min.js"><!--  --></script>
+	    
+	</head>
+	<body>
+		<div data-role="page" id="home" class="main-content animated fadeInLeft" style="background: white">
+			<div class="panel rounded panel-theme" style="background: #b3998a; border-color: grey; margin: 0px">
+				<div style="background: #b3998a; border-color: grey">
+					<div class="row" style="margin-left: 1%">
+						<ul class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="list-style: outside none none">
+							<li>
+								<a class="ui-link ui-btn ui-icon-back ui-btn-icon-notext ui-corner-all" style="background: blue; border-color: grey; color: grey" data-icon="back" href="#" onclick="home()"></a>
+							</li>
+						</ul>
+						<span class="col-lg-10 col-md-10 col-sm-10 col-xs-9"><img src="img/logo.png" style="width: 100%"/></span>
+						<ul class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="list-style: outside none none">
+							<li>
+								<a class="ui-link ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all" style="background: RED; border-color: grey; color: grey" data-icon="delete" href="#" onclick="cerrarSesion()"></a>
+							</li>
+						</ul>
+					</div>
+					<form id="formFiltro" role="search">
+						<input id="idResponsable" name="idResponsable" type="hidden">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0px;background: white">
+							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="margin: 0px 0px 0px 0px;padding: 0px 0px 0px 10px">
+								<input id="proveedor" name="proveedor" class="form-control" type="text" placeholder="Ingresar proveedor">
+							</div>
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0px;background: white">
+							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="margin: 0px 0px 0px 0px;padding: 0px 0px 0px 10px">
+								<input id="producto" name="producto" class="form-control" type="text" placeholder="Ingresar Producto">
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
+									<a id="btnFiltro" class="ui-btn-corner-all ui-btn-up-c ui-btn ui-icon-search ui-btn-icon-top ui-shadow" style="margin: 5px 0px;padding: 7px 0px; background: #b3998a;" href="#" data-role="button" role="button">
+									    <span class="ui-icon ui-icon-search ui-icon-shadow">&nbsp;</span>
+									</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			
+			<div id="superTabla">
+				<div id="tabla">
+					<!--  -->
+				</div>
+			</div>
+			<br />		
+		</div>
+		<script>
+//			var idResponsable = "1";
+//			$("#idResponsable").val("1");
+ 			$("#idResponsable").val(localStorage.getItem("idResponsable"));
+			var idResponsable = localStorage.getItem("idResponsable");
+			function cerrarSesion(){
+				delete localStorage["idResponsable"]; // Para cerrar sesion
+				delete localStorage["rol"]; // Para cerrar sesion
+				window.location.replace('index.html');
+			}
+			function home(){
+				window.location.replace('home-resp.html');
+			}
+			$(document).on('pageinit', '#home', function(){
+        		$("#btnFiltro").click(function(event){
+    				$('#tabla').remove();
+    				$('#superTabla').append('<div id="tabla"><!-- --></div>');
+					ajaxListado();
+				});	
+			});
+			$(window).load(function(){
+				$('#tabla').remove();
+				$('#superTabla').append('<div id="tabla"><!-- --></div>');
+				ajaxListado();		
+			});
+			function ajaxListado(){
+				$.ajax({
+//	 				url: 'http://192.168.37.13:8080/CC/responsable/buscar/historico',
+	 		 		url: 'http://coef.azurewebsites.net/COEF/responsable/buscar/historico',
+					data: $("#formFiltro").serialize(),
+			        dataType: "json",
+			        async: true,
+			        success: function (result) {
+						if(result != ""){
+			        		$.each(result, function(i, row) {
+				        		$('#tabla').append('<br />'+
+						        				  '<div class="panel rounded shadow panel-theme" id="panel-'+row.id+'" style="background: rgba(234, 234, 236, 1);'+
+						        				  '		margin: 0% 1%;  border-bottom: 10px solid #a58674; border-right: 1px solid #a58674;'+
+				        				  		  '		border-left: 1px solid #a58674">'+
+												  '		<div class="panel-heading" onclick="abrirTabla('+row.id+', '+row.problemas+')">'+
+												  '			<div class="pull-left">'+
+												  '				<h3 class="panel-title"><span style="text-shadow: initial">Pedido: '+row.id+' - Obra: '+row.obra.nombre+' - Proveedor: '+row.proveedor.nombre+'</span></h3>'+
+												  '			</div>'+
+												  '			<div class="clearfix">'+
+												  '				<!--   -->'+
+												  '			</div>'+
+												  '		</div>'+
+												  '</div>');
+			        			$('#body-'+row.id).remove();
+			        			$('#body-'+row.id).append('<tbody id="body-'+row.id+'">');
+							});
+			        	}else{
+		            		bootbox.alert('No hay ningun pedido cargado con los datos ingresados.');
+				        }
+			        },
+			        error: function (request,error) {
+			        	bootbox.alert('Ha ocurrido un error de red, intente nuevamente por favor!');
+			        }
+			    });
+			}
+			function abrirTabla(id, problemas){
+				if($('#panel-body-'+id).length){
+					$('#panel-body-'+id).remove();
+				}else {
+					$('#panel-'+id).append('<div class="panel-body" id="panel-body-'+id+'" style="margin-bottom:5px; background: rgba(234, 234, 236, 0.72); border-top: 10px solid #a58674;">'+
+							  '			<div class="table-responsive">'+
+							  '				<table class="table table-bordered table-hover table-striped table-theme" id="table-'+id+'">'+
+							  '					<thead>'+
+							  '						<tr>'+
+							  '							<th style="min-width: 10%;">#</th>'+
+							  '							<th style="min-width: 50%;">Producto</th>'+
+							  '						</tr>'+
+							  '					</thead>'+
+							  '					<div id="body-'+id+'">'+
+							  '						<tbody id="data-'+id+'">'+
+							  '						</tbody>'+
+							  '					</div>'+
+							  '				</table>'+
+							  '			</div>'+
+							  '		</div>');
+					var idPedido = id;
+        			$.ajax({
+//    	 				url: 'http://192.168.37.13:8080/CC/responsable/buscar/detallepedido?idPedido='+idPedido+'&admin='+ false,
+ 	    	 			url: 'http://coef.azurewebsites.net/COEF/responsable/buscar/detallepedido?idPedido='+idPedido+'&admin='+ false,
+    					data: $("#formFiltro").serialize(),
+    			        dataType: "json",
+    			        async: true,
+    			        success: function (result) {
+    			        	$.each(result, function(i, detalle) {
+    							$('#table-'+idPedido).append('<tr>'+
+		    									  '		<th class="th-'+detalle.id+'"><span style="text-shadow: initial">'+detalle.cantidad+'</span></th>'+
+												  '		<th class="th-'+detalle.id+'"><span style="text-shadow: initial">'+detalle.producto.nombre+'</span></th>'+
+												  '</tr>');
+								if(detalle.problemas == true){
+									$(".th-"+detalle.id).css('background', '#8A0808').css('color', 'white');
+								}else if(detalle.problemas == false){
+							   		$(".th-"+detalle.id).css('background', '#4B610B').css('color', 'white');		
+								}
+								$("#check-"+detalle.producto.id).addClass("ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-notext col-lg-1 col-md-1 col-sm-1 col-xs-1");
+						        $("#delete-"+detalle.producto.id).addClass("ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-notext col-lg-1 col-md-1 col-sm-1 col-xs-1");
+							});
+	        				$('#body-'+id).append('</tbody>');
+    			        },
+			        	error: function (request,error) {
+		            		bootbox.alert('Ha ocurrido un error de red, intente nuevamente por favor!');
+			        	}
+					});
+				}
+			}
+		</script>
+	</body>
+</html>
