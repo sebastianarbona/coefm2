@@ -57,10 +57,10 @@
 			$(document).on('pageinit', '#login', function(){
 				$('#botonLogin').on("click",function(event) {
 					var cadena = $('#formulario').serialize();
-		            PushbotsPlugin.getToken(function(token){
-	                    while(token == null){
+//		            PushbotsPlugin.getToken(function(token){
+//	                    while(token == null){
 
-	                    }
+//	                    }
 						cadena = cadena + "&token=" + token;
 						$.ajax({
 // 							url: 'http://192.168.37.13:8080/CC/login/mobile',
