@@ -61,7 +61,7 @@
 //	                    while(token == null){
 
 //	                    }
-						cadena = cadena + "&token=" + token;
+						cadena = cadena + "&token=" + '';
 						$.ajax({
 // 							url: 'http://192.168.37.13:8080/CC/login/mobile',
 							url: 'http://coef.azurewebsites.net/COEF/login/mobile',
@@ -90,7 +90,7 @@
 					        	window.location.replace('login.html');
 					        }
 						});
-		            });
+		            //});
 				});
 			});
 		</script>
