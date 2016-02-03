@@ -27,9 +27,9 @@
 	<body>
 		<div data-role="page" id="home" class="main-content animated fadeInLeft" style="background: white">
 			<div class="panel rounded panel-theme" style="background: #b3998a; border-color: grey; margin: 0px">
-				<div style="background: #b3998a; border-color: grey">
+				<div style="background: black; border-color: black">
 					<div class="row" style="margin-left: 1%">
-						<span class="col-lg-11 col-md-11 col-sm-11 col-xs-10"><img src="img/logo.png" style="width: 100%"/></span>
+						<span class="col-lg-11 col-md-11 col-sm-11 col-xs-10"><img src="img/logo.png" style="max-width: 100%"/></span>
 						<ul class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="list-style: outside none none">
 							<li>
 								<a class="ui-link ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all" style="background: RED; border-color: grey; color: grey" data-icon="delete" href="#" onclick="cerrarSesion()"></a>
@@ -148,7 +148,7 @@
 				}else {
 					$('#panel-'+id).append('<div class="panel-body" id="panel-body-'+id+'" style="margin-bottom:5px; background: rgba(234, 234, 236, 0.72); border-top: 10px solid #a58674;">'+
 									  '		<div class="table-responsive">'+
-									  '			<table class="table table-bordered table-hover table-striped table-theme" id="table-'+id+'">'+
+									  '			<table class="table" id="table-'+id+'">'+
 									  '				<thead>'+
 									  '					<tr>'+
 									  '						<th style="min-width: 10%;">Pedido</th>'+
@@ -190,10 +190,10 @@
 	        						prodDesc = detalle.producto.nombre + " (" + detalle.observacionProblema + ")";
 		        				}
 	        					$('#table-'+idPedido).append('<tr onclick="solucionar('+detalle.id+', '+detalle.problemas+')">'+
-	        									  '		<th class="th-'+detalle.id+'"><span style="text-shadow: initial">'+detalle.cantidad+'</span></th>'+
-										  		  '		<th class="th-'+detalle.id+'"><span style="text-shadow: initial">'+NR+'</span></th>'+
-												  '		<th class="th-'+detalle.id+'"><span style="text-shadow: initial">'+un+'</span></th>'+
-												  '		<th class="th-'+detalle.id+'"><span style="text-shadow: initial">'+ prodDesc +'</span></th>'+
+	        									  '		<th class="th-'+detalle.id+'"><span style="font-size: 11px; font-family: Helvetica ! important; font-weight: 500 ! important;">'+detalle.cantidad+'</span></th>'+
+										  		  '		<th class="th-'+detalle.id+'"><span style="font-size: 11px; font-family: Helvetica ! important; font-weight: 500 ! important;">'+NR+'</span></th>'+
+												  '		<th class="th-'+detalle.id+'"><span style="font-size: 11px; font-family: Helvetica ! important; font-weight: 500 ! important;">'+un+'</span></th>'+
+												  '		<th class="th-'+detalle.id+'"><span style="font-size: 11px; font-family: Helvetica ! important; font-weight: 500 ! important;">'+ prodDesc +'</span></th>'+
 												  '</tr>');
 								  if(detalle.problemas == true){
 										$(".th-"+detalle.id).css('background', '#8A0808').css('color', 'white');

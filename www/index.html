@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Inicio-COEF Mobile</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>COEF Mobile</title>
 		
 		<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.css" />
 		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"/>
@@ -31,10 +31,10 @@
 				var rol = localStorage.getItem("rol");
 				if(rol == "ADMINISTRATIVO"){
 					window.location.replace("home-admin.html");
-				}else if(rol == "RESPONSABLE"){
+				} else if(rol == "RESPONSABLE"){
 					window.location.replace("home-resp.html");
-				}else {
-					window.location.replace("login.html");
+				} else {
+				 	window.location.replace("login.html");
 				}
 			});
 		</script>
