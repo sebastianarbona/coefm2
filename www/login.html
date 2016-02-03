@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Login-COEF Mobile</title>
+		<title>COEF Mobile</title>
 		
 		<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.css" />
 		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"/>
@@ -58,7 +58,9 @@
 				$('#botonLogin').on("click",function(event) {
 					var cadena = $('#formulario').serialize();
 		            PushbotsPlugin.getToken(function(token){
-	                    alert(token);
+		            	while(token == null){
+		            	
+		            	}
 						cadena = cadena + "&token=" + token;
 						$.ajax({
 // 							url: 'http://192.168.37.13:8080/CC/login/mobile',
