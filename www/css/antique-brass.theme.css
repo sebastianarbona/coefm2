@@ -359,8 +359,8 @@ a.list-group-item.active:focus {
  * BUTTON
  * ======================================================================== */
 .btn-theme {
-  background-color: #b3998a;
-  border-color: #b3998a;
+  background-color: black;
+  border-color: black;
   color: white;
 }
 .btn-theme:hover,
@@ -553,8 +553,8 @@ a.list-group-item.active:focus {
  * PANEL
  * ======================================================================== */
 .panel-theme .panel-heading {
-  background-color: #b3998a;
-  border: 1px solid #b19687;
+  background-color: orange;
+  border: 1px solid darkorange;
   color: white;
 }
 .panel-theme .panel-heading .option .btn:hover {
