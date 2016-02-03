@@ -19,8 +19,8 @@
 		<script type="text/javascript" src="cordova.js"><!--  --></script>
 		<script src="js/jquery-1.9.1.min.js"><!--  --></script>
 		<script src="js/jquery.mobile-1.4.5.min.js"><!--  --></script>
-	    <script src="js/bootstrap.min.js"><!--  --></script>
-   	    <script src="js/bootbox.min.js"><!--  --></script>    
+	    	<script src="js/bootstrap.min.js"><!--  --></script>
+   	    	<script src="js/bootbox.min.js"><!--  --></script>    
 		<script src="js/pushbots.js"><!--  --></script>
 	</head>
 	<body>
@@ -44,11 +44,12 @@
 					border-right: 1px solid #a58674;border-left: 1px solid #a58674">
 					<form id="formulario">
 						<input name="usuario" id="usuario" placeholder="Ingrese Usuario..." type="text" style='width:100%; height:50px'/>
-		            	<input type="password" name="password" id="password" placeholder="Ingrese Contrase&ntilde;a" style='width:100%; height:50px'/>
+		            			<input type="password" name="password" id="password" placeholder="Ingrese Contrase&ntilde;a" style='width:100%; height:50px'/>
+						
 						<h2 align=center>
-								<input type="submit" value="Ingresar" class="btn btn-theme shadow rounded" id="botonLogin" style="width: 100%">
+							<input type="submit" value="Ingresar" class="btn btn-theme shadow rounded" id="botonLogin" style="width: 100%">
 						</h2>
-		        	</form>
+		        		</form>
 				</div>
 			</div><!-- /.panel-body -->
 		</div> 
@@ -57,10 +58,11 @@
 			$(document).on('pageinit', '#login', function(){
 				$('#botonLogin').on("click",function(event) {
 					var cadena = $('#formulario').serialize();
-		            PushbotsPlugin.getToken(function(token){
-		            	while(token == null){
+		            		PushbotsPlugin.getToken(function(token){
+		            			while(token == null){
 		            	
-		            	}
+		            			}
+						
 						cadena = cadena + "&token=" + token;
 						$.ajax({
 // 							url: 'http://192.168.37.13:8080/CC/login/mobile',
@@ -71,28 +73,30 @@
 					        async: true,
 					        success: function (result) {
 						        if(result.error != null){
-						        	bootbox.alert("Usuario y/o contrase&#241;a incorrecta.");
-						        	window.location.replace('login.html');
+						        	bootbox.alert("Usuario y/o contrase&#241;a incorrecta.", function() {
+					        			window.location.replace('login.html');  
+								});
+							}else{
+								if(result.usuario.role == "ADMINISTRATIVO"){
+									localStorage.setItem("idAdmin", result.id);
+									localStorage.setItem("rol", result.usuario.role);
+									window.location.replace("home-admin.html");
 								}else{
-									if(result.usuario.role == "ADMINISTRATIVO"){
-										localStorage.setItem("idAdmin", result.id);
-										localStorage.setItem("rol", result.usuario.role);
-										window.location.replace("home-admin.html");
-									}else{
-										localStorage.setItem("idResponsable", result.id);
-										localStorage.setItem("rol", result.usuario.role);
-										window.location.replace("home-resp.html");
-									}
+									localStorage.setItem("idResponsable", result.id);
+									localStorage.setItem("rol", result.usuario.role);
+									window.location.replace("home-resp.html");
 								}
+							}
 					        },
 					        error: function (request, error) {
-					        	bootbox.alert("Ocurrio un error inesperado, intente nuevamente.");
-					        	window.location.replace('login.html');
+					        	bootbox.alert("Ocurrio un error inesperado, intente nuevamente.", function() {
+					        		window.location.replace('login.html');  
+							});
 					        }
-						});
-		            });
-				});
+					});
+		            	});
 			});
-		</script>
-	</body>
+		});
+	</script>
+</body>
 </html>
