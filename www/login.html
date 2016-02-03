@@ -71,7 +71,7 @@
 					        async: true,
 					        success: function (result) {
 						    if(result.error != null){
-					        	alert("Usuario y/o contrase&#241;a incorrecta.");
+					        	bootbox.alert("Usuario y/o contrase&#241;a incorrecta.");
 				        		window.location.replace('login.html');  
 							}else{
 								if(result.usuario.role == "ADMINISTRATIVO"){
@@ -86,7 +86,7 @@
 							}
 					        },
 					        error: function (request, error) {
-					        	alert("Ocurrio un error inesperado, intente nuevamente.");
+					        	bootbox.alert("Ocurrio un error inesperado, intente nuevamente.");
 					        	window.location.replace('login.html');  
 					        }
 					});
