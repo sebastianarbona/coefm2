@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.css" />
 		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"/>
 		<link rel="stylesheet" href="css/bootstrap.min.css"/>
-		<link rel="stylesheet" href="css/bud-green.theme.css"/>
+
 		<link href="css/reset.css" rel="stylesheet"/>
 		<link href="css/layout.css" rel="stylesheet"/>
 		<link href="css/components.css" rel="stylesheet"/>
@@ -18,8 +18,8 @@
 		
 		<script src="js/jquery-1.9.1.min.js"><!--  --></script>
 		<script src="js/jquery.mobile-1.4.5.min.js"><!--  --></script>
-	    	<script src="js/bootstrap.min.js"><!--  --></script>
-   	    	<script src="js/bootbox.min.js"><!--  --></script>    
+	    <script src="js/bootstrap.min.js"><!--  --></script>
+   	    <script src="js/bootbox.min.js"><!--  --></script>    
 	</head>
 	<body>
 		<div data-role="page" id="login" class="main-content animated fadeInLeft" style="background: transparent url('img/fondo.jpg') repeat scroll 0% 0%">
@@ -45,7 +45,7 @@
 		            			<input type="password" name="password" id="password" placeholder="Ingrese Contrase&ntilde;a" style='width:100%; height:50px'/>
 						
 						<h2 align=center>
-							<input type="submit" value="Ingresar" class="btn btn-theme shadow rounded" id="botonLogin" style="width: 100%">
+							<input type="button" value="Ingresar" class="btn btn-theme shadow rounded" id="botonLogin" style="width: 100%">
 						</h2>
 		        		</form>
 				</div>
@@ -54,13 +54,18 @@
 	    <script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript">
 			$(document).on('pageinit', '#login', function(){
+				console.log('Iniciando');
+
 				$('#botonLogin').on("click",function(event) {
 					var cadena = $('#formulario').serialize();
-//		            		PushbotsPlugin.getToken(function(token){
-//		            			while(token == null){
-		            	
-//		            			}
+		            PushbotsPlugin.getToken(function(token){
+            			console.log('Pushbot');
+            			while(token == null){
+            	
+            			}
 						
+						console.log('Logueando...');
+				
 						cadena = cadena + "&token=";
 						$.ajax({
 // 							url: 'http://192.168.37.13:8080/CC/login/mobile',
@@ -69,28 +74,38 @@
 							type: "POST",
 							dataType: "json",
 					        async: true,
+					        beforeSend: function() {
+					        	$.mobile.loading('show', {
+								    theme: "a",
+								    text: 'Ingresando...',
+								    textonly: true,
+								    textVisible: true
+							   });
+                        	},
+                        	complete: function() {
+                           		$.mobile.loading('hide', {});
+                           	},
 					        success: function (result) {
-						    if(result.error != null){
-					        	bootbox.alert("Usuario y/o contrase&#241;a incorrecta.");
-				        		window.location.replace('login.html');  
-							}else{
-								if(result.usuario.role == "ADMINISTRATIVO"){
-									localStorage.setItem("idAdmin", result.id);
-									localStorage.setItem("rol", result.usuario.role);
-									window.location.replace("home-admin.html");
+					        	console.log('Resultado: ' + result);
+							    if(result.error != null){
+						        	bootbox.alert("Usuario y/o contrase&#241;a incorrecta.");
 								}else{
-									localStorage.setItem("idResponsable", result.id);
-									localStorage.setItem("rol", result.usuario.role);
-									window.location.replace("home-resp.html");
+									if(result.usuario.role == "ADMINISTRATIVO"){
+										localStorage.setItem("idAdmin", result.id);
+										localStorage.setItem("rol", result.usuario.role);
+										window.location.replace("home-admin.html");
+									}else{
+										localStorage.setItem("idResponsable", result.id);
+										localStorage.setItem("rol", result.usuario.role);
+										window.location.replace("home-resp.html");
+									}
 								}
-							}
 					        },
 					        error: function (request, error) {
 					        	bootbox.alert("Ocurrio un error inesperado, intente nuevamente.");
-					        	window.location.replace('login.html');  
 					        }
 					});
-//		            	});
+	          	});
 			});
 		});
 	</script>
