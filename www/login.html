@@ -57,7 +57,6 @@
 			$(document).on('pageinit', '#login', function(){
 				$('#botonLogin').on("click",function(event) {
 					var cadena = $('#formulario').serialize();
-		            alert(cadena);
 		            PushbotsPlugin.getToken(function(token){
 	                    alert(token);
 						cadena = cadena + "&token=" + token;

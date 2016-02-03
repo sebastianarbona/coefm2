@@ -1,8 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.coef"  version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Coef</name>
-    <description>
-  Esta app, sirve para que el responsable pueda controlar los pedidos enviados a la obra.  </description>
+    <name>COEF</name>
+    <description>Control de pedidos de materiales para obras de construccion.</description>
     <author email="mobile@grupocore.net" href="http://www.grupocore.net">
         Grupo Core Team
     </author>
