@@ -35,6 +35,8 @@ var app = {
     onDeviceReady: function() {
         if(PushbotsPlugin.isAndroid()){
             PushbotsPlugin.initializeAndroid("56140447177959c4358b456a", "185110731795");
+        } else if (PushbotsPlugin.isiOS()) {
+            PushbotsPlugin.initializeiOS('56140447177959c4358b456a');
         }
     },
     // Update DOM on a Received Event
