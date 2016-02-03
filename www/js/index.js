@@ -39,6 +39,8 @@ var app = {
         } else if (PushbotsPlugin.isiOS()) {
             PushbotsPlugin.initializeiOS('56140447177959c4358b456a');
         }
+        alert("FIN");
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
