@@ -71,9 +71,8 @@
 					        async: true,
 					        success: function (result) {
 						        if(result.error != null){
-						        	bootbox.alert("Usuario y/o contrase&#241;a incorrecta.", function() {
-					        			window.location.replace('login.html');  
-								});
+						        	alert("Usuario y/o contrase&#241;a incorrecta.");
+					        		window.location.replace('login.html');  
 							}else{
 								if(result.usuario.role == "ADMINISTRATIVO"){
 									localStorage.setItem("idAdmin", result.id);
@@ -87,9 +86,8 @@
 							}
 					        },
 					        error: function (request, error) {
-					        	bootbox.alert("Ocurrio un error inesperado, intente nuevamente.", function() {
-					        		window.location.replace('login.html');  
-							});
+					        	alert("Ocurrio un error inesperado, intente nuevamente.");
+					        	window.location.replace('login.html');  
 					        }
 					});
 		            	});
