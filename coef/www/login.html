@@ -57,11 +57,10 @@
 			$(document).on('pageinit', '#login', function(){
 				$('#botonLogin').on("click",function(event) {
 					var cadena = $('#formulario').serialize();
+		            alert(cadena);
 		            PushbotsPlugin.getToken(function(token){
-	                    while(token == null){
-
-	                    }
-						cadena = cadena + "&token=" + '';
+	                    alert(token);
+						cadena = cadena + "&token=" + token;
 						$.ajax({
 // 							url: 'http://192.168.37.13:8080/CC/login/mobile',
 							url: 'http://coef.azurewebsites.net/COEF/login/mobile',
