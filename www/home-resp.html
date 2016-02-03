@@ -25,9 +25,9 @@
 	    
 	</head>
 	<body>
-		<div data-role="page" id="home" class="main-content animated fadeInLeft" style="background: white">
-			<div class="panel rounded panel-theme" style="background: #b3998a; border-color: grey; margin: 0px">
-				<div style="background: black; border-color: black">
+		<div data-role="page" id="home" class="main-content animated fadeInLeft" style="background: transparent url('img/fondo.jpg') repeat scroll 0% 0%">
+			<div class="panel rounded panel-theme" style="background: transparent; margin: 0px">
+				<div style="background: transparent; border-color: black">
 					<div class="row" style="margin-left: 1%">
 						<span class="col-lg-11 col-md-11 col-sm-11 col-xs-10"><img src="img/logo.png" style="max-width: 100%"/></span>
 						<ul class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="list-style: outside none none">
@@ -43,24 +43,26 @@
 							</div>
 						</ul>
 					</div>
-					<form id="formFiltro" role="search">
-						<input id="idResponsable" name="idResponsable" type="hidden">
-						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0px;background: white">
-							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="margin: 0px 0px 0px 0px;padding: 0px 0px 0px 10px">
-								<input id="proveedor" name="proveedor" class="form-control" type="text" placeholder="Ingresar proveedor">
+					<div style="margin-top: 10px;">
+						<form id="formFiltro" role="search">
+							<input id="idResponsable" name="idResponsable" type="hidden">
+							<div class="col-sm-11" style="padding: 0px; ">
+								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="margin: 0px; padding: 0px 0px 0px 10px">
+									<input id="proveedor" name="proveedor" class="form-control" type="text" placeholder="Ingresar proveedor">
+								</div>
 							</div>
-						</div>
-						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0px;background: white">
-							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="margin: 0px 0px 0px 0px;padding: 0px 0px 0px 10px">
-								<input id="producto" name="producto" class="form-control" type="text" placeholder="Ingresar Producto">
+							<div class="col-sm-11" style="padding: 0px; ">
+								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="margin: 0px 0px 0px 0px; padding: 0px 0px 0px 10px">
+									<input id="producto" name="producto" class="form-control" type="text" placeholder="Ingresar Producto">
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
+										<a id="btnFiltro" class="ui-btn-corner-all ui-btn-up-c ui-btn ui-icon-search ui-btn-icon-top ui-shadow" style="margin: 5px 0px;padding: 7px 0px; background: #b3998a;" href="#" data-role="button" role="button">
+										    <span class="ui-icon ui-icon-search ui-icon-shadow">&nbsp;</span>
+										</a>
+								</div>
 							</div>
-							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
-									<a id="btnFiltro" class="ui-btn-corner-all ui-btn-up-c ui-btn ui-icon-search ui-btn-icon-top ui-shadow" style="margin: 5px 0px;padding: 7px 0px; background: #b3998a;" href="#" data-role="button" role="button">
-									    <span class="ui-icon ui-icon-search ui-icon-shadow">&nbsp;</span>
-									</a>
-							</div>
-						</div>
-					</form>
+						</form>
+					</div>
 				</div>
 			</div>
 			
