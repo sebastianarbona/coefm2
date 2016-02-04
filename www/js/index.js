@@ -48,6 +48,8 @@ var app = {
             push_token = token;
         });
 
+        alert(push_token);
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
