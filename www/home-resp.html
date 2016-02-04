@@ -107,6 +107,18 @@
 					data: $("#formFiltro").serialize(),
 			        dataType: "json",
 			        async: true,
+			        beforeSend: function() {
+			        	$.mobile.loading('show', {
+						    theme: "a",
+						    text: 'Cargando...',
+						    textonly: false,
+						    textVisible: true
+					   });
+                	},
+                	complete: function() {
+                   		$.mobile.loading('hide', {});
+                   	},
+
 			        success: function (result) {
 						if(result != ""){
 							$.each(result, function(i, row) {
@@ -176,6 +188,18 @@
 									data: $("#formProblema").serialize(),
 				 					dataType: "json",
 				 			        async: true,
+				 			        beforeSend: function() {
+								        $.mobile.loading('show', {
+											    theme: "a",
+											    text: 'Cargando...',
+											    textonly: false,
+											    textVisible: true
+										});
+					                },
+				                	complete: function() {
+				                   		$.mobile.loading('hide', {});
+				                   	},
+
 				 			        success: function (result) {
 				 			        	if(result.error != null){
 						            		bootbox.alert(result.error);
