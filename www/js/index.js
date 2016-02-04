@@ -40,10 +40,12 @@ var app = {
 
         Pushbots.on("registered", function(token){
             console.log("Registration Id:" + token);
+            alert("TOKEN "  + token);
         });
          
         Pushbots.getRegistrationId(function(token){
             console.log("Registration Id:" + token);
+            alert("TOKEN "  + token);
         });
 
         alert("CHAU");
