@@ -69,7 +69,7 @@
 			    // Bind any events that are required on startup. Common events are:
 			    // 'load', 'deviceready', 'offline', and 'online'.
 			    bindEvents: function() {
-			        document.addEventListener('deviceready', this.onDeviceReady, false);
+			        document.addEventListener('deviceready', app.onDeviceReady, false);
 			    },
 			    // deviceready Event Handler
 			    //
@@ -78,11 +78,16 @@
 			    onDeviceReady: function() {
 			        
 			        Pushbots = PushbotsPlugin.initialize("56140447177959c4358b456a", {"android":{"sender_id":"185110731795"}});
+					
+					app.receivedEvent('deviceready');
 
 			        alert("Iniciando... " + Pushbots);
 
 
 			        Pushbots.on("registered", function(token){
+			        	while(token != null){
+
+			        	}
 			            console.log("Registration Id:" + token);
 			            push_token = token;
 			        });
