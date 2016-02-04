@@ -77,10 +77,8 @@
 			    // function, we must explicitly call 'app.receivedEvent(...);'
 			    onDeviceReady: function() {
 			        
-			        Pushbots = PushbotsPlugin.initialize("56140447177959c4358b456a", {"android":{"sender_id":"185110731795"}});
+			        var Pushbots = PushbotsPlugin.initialize("56140447177959c4358b456a", {"android":{"sender_id":"185110731795"}});
 					
-					app.receivedEvent('deviceready');
-
 			        alert("Iniciando... " + Pushbots);
 
 
@@ -99,7 +97,7 @@
 			        });
 
 			        while(push_token == null){
-			            setTimeout(function(){alert("Esperando")}, 5000);
+
 			        }
 
 			        alert(push_token);
