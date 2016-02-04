@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var Pushbots = null;
 var push_token = null;
 
 var app = {
@@ -36,39 +37,25 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         
-        var Pushbots = PushbotsPlugin.initialize("56140447177959c4358b456a", {"android":{"sender_id":"185110731795"}});
+        Pushbots = PushbotsPlugin.initialize("56140447177959c4358b456a", {"android":{"sender_id":"185110731795"}});
 
         alert("Iniciando... " + Pushbots);
 
-        setTimeout(
-          function() 
-          {
-            alert("Durmiendo... ");
-          }, 30000);
 
         Pushbots.on("registered", function(token){
             console.log("Registration Id:" + token);
-            
-            while(token == null){
-             setTimeout(
-                      function() 
-                      {
-                      }, 30000);
-                     alert("Esperando...");
-
-            }
-
-            alert(token);
-
             push_token = token;
         });
          
         Pushbots.getRegistrationId(function(token){
             console.log("Registration Id:" + token);
-            alert("T: " + token);
             push_token = token;
 
         });
+
+        while(push_token == null){
+            setTimeout(function(){alert("Esperando")}, 5000);
+        }
 
         alert(push_token);
 
