@@ -16,7 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
- alert("HOLA");
+var push_token = null;
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -34,21 +35,19 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        alert("HOLA");
         
         var Pushbots = PushbotsPlugin.initialize("56140447177959c4358b456a", {"android":{"sender_id":"185110731795"}});
 
         Pushbots.on("registered", function(token){
             console.log("Registration Id:" + token);
-            alert("TOKEN "  + token);
+            push_token = token;
         });
          
         Pushbots.getRegistrationId(function(token){
             console.log("Registration Id:" + token);
-            alert("TOKEN "  + token);
+            push_token = token;
         });
 
-        alert("CHAU");
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {

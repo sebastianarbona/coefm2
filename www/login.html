@@ -58,11 +58,13 @@
 
 				$('#botonLogin').on("click",function(event) {
 					var cadena = $('#formulario').serialize();
-		            PushbotsPlugin.getToken(function(token){
-            			console.log('Pushbot');
-            			while(token == null){
+//		            PushbotsPlugin.getToken(function(token){
+            			alert('Pushbot');
+            			alert(push_token);
+
+//            			while(token == null){
             	
-            			}
+//            			}
 						
 						console.log('Logueando... ' + token);
 				
@@ -104,7 +106,7 @@
 					        error: function (request, error) {
 					        	bootbox.alert("Ocurrio un error inesperado, intente nuevamente.");
 					        }
-					});
+//					});
 	          	});
 			});
 		});
