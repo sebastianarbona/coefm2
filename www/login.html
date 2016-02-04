@@ -66,9 +66,13 @@
             	
 //            			}
 						
-						console.log('Logueando... ' + token);
+						console.log('Logueando... ' + push_token);
 				
-						cadena = cadena + "&token=";
+						if(push_token == null){
+							push_token = "";
+						}
+						
+						cadena = cadena + "&token=" + push_token;
 						$.ajax({
 // 							url: 'http://192.168.37.13:8080/CC/login/mobile',
 							url: 'http://coef.azurewebsites.net/COEF/login/mobile',
