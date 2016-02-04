@@ -38,6 +38,12 @@ var app = {
         
         var Pushbots = PushbotsPlugin.initialize("56140447177959c4358b456a", {"android":{"sender_id":"185110731795"}});
 
+        setTimeout(
+          function() 
+          {
+            alert(Pushbots);
+          }, 5000);
+
         Pushbots.on("registered", function(token){
             console.log("Registration Id:" + token);
             alert(token);
