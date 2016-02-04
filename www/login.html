@@ -54,6 +54,7 @@
 	    <script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript">
 
+			alert("Iniciando... " );
 
 			var Pushbots = null;
 			var push_token = null;
@@ -113,6 +114,8 @@
 			};
 
 			app.initialize();
+
+			alert("PUSHBOT: " + Pushbots);
 
 			$(document).on('pageinit', '#login', function(){
 				console.log('Iniciando');
