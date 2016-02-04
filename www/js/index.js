@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+ alert("HOLA");
 var app = {
     // Application Constructor
     initialize: function() {
@@ -36,17 +37,16 @@ var app = {
         alert("HOLA");
         
         var Pushbots = PushbotsPlugin.initialize("56140447177959c4358b456a", {"android":{"sender_id":"185110731795"}});
-        alert("CHAU");
 
-        alert(Pushbots);
         Pushbots.on("registered", function(token){
-            alert(token);
+            console.log("Registration Id:" + token);
+        });
+         
+        Pushbots.getRegistrationId(function(token){
+            console.log("Registration Id:" + token);
         });
 
         alert("CHAU");
-
-
-
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
