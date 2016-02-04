@@ -78,29 +78,20 @@
 			    onDeviceReady: function() {
 			        
 			        var Pushbots = PushbotsPlugin.initialize("56140447177959c4358b456a", {"android":{"sender_id":"185110731795"}});
-					
-			        alert("Iniciando... " + Pushbots);
-
 
 			        Pushbots.on("registered", function(token){
-			        	while(token != null){
+			        	while(token == null){
 
 			        	}
-			            console.log("Registration Id:" + token);
+			        	alert("R: " + token);
+
 			            push_token = token;
 			        });
 			         
-			        Pushbots.getRegistrationId(function(token){
-			            console.log("Registration Id:" + token);
-			            push_token = token;
+			        
 
-			        });
 
-			        while(push_token == null){
-
-			        }
-
-			        alert(push_token);
+			        alert("PT: " + push_token);
 
 			    },
 			    // Update DOM on a Received Event
@@ -118,7 +109,13 @@
 
 			app.initialize();
 
-			alert("PUSHBOT: " + Pushbots);
+			alert("PUSHBOT 2: " + Pushbots);
+
+			Pushbots.getRegistrationId(function(token){
+	            console.log("Registration Id:" + token);
+	            push_token = token;
+	            alert("ID: " + token);
+	        });
 
 			$(document).on('pageinit', '#login', function(){
 				console.log('Iniciando');
