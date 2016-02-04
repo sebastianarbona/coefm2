@@ -37,8 +37,6 @@ var app = {
         
         Pushbots = PushbotsPlugin.initialize("56140447177959c4358b456a", {"android":{"sender_id":"185110731795"}});
         
-        setTimeout(function(){}, 25000);
-
         Pushbots.on("registered", function(token){
             if(token != null){
                 localStorage.setItem("token", token);
