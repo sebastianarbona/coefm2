@@ -64,7 +64,7 @@
             	
             			}
 						
-						console.log('Logueando...');
+						console.log('Logueando... ' + token);
 				
 						cadena = cadena + "&token=";
 						$.ajax({
@@ -78,7 +78,7 @@
 					        	$.mobile.loading('show', {
 								    theme: "a",
 								    text: 'Ingresando...',
-								    textonly: true,
+								    textonly: false,
 								    textVisible: true
 							   });
                         	},
