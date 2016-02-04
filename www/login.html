@@ -53,91 +53,16 @@
 		</div> 
 	    <script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript">
-
-			alert("Iniciando... " );
-
-			var Pushbots = null;
-			var push_token = null;
-
-			var app = {
-			    // Application Constructor
-			    initialize: function() {
-			        this.bindEvents();
-			    },
-			    // Bind Event Listeners
-			    //
-			    // Bind any events that are required on startup. Common events are:
-			    // 'load', 'deviceready', 'offline', and 'online'.
-			    bindEvents: function() {
-			        document.addEventListener('deviceready', app.onDeviceReady, false);
-			    },
-			    // deviceready Event Handler
-			    //
-			    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-			    // function, we must explicitly call 'app.receivedEvent(...);'
-			    onDeviceReady: function() {
-			        
-			        var Pushbots = PushbotsPlugin.initialize("56140447177959c4358b456a", {"android":{"sender_id":"185110731795"}});
-
-			        Pushbots.on("registered", function(token){
-			        	while(token == null){
-
-			        	}
-			        	alert("R: " + token);
-
-			            push_token = token;
-			        });
-			         
-			        
-
-
-			        alert("PT: " + push_token);
-
-			    },
-			    // Update DOM on a Received Event
-			    receivedEvent: function(id) {
-			        var parentElement = document.getElementById(id);
-			        var listeningElement = parentElement.querySelector('.listening');
-			        var receivedElement = parentElement.querySelector('.received');
-
-			        listeningElement.setAttribute('style', 'display:none;');
-			        receivedElement.setAttribute('style', 'display:block;');
-
-			        console.log('Received Event: ' + id);
-			    }
-			};
-
-			app.initialize();
-
-			alert("PUSHBOT 2: " + Pushbots);
-
-			Pushbots.getRegistrationId(function(token){
-	            console.log("Registration Id:" + token);
-	            push_token = token;
-	            alert("ID: " + token);
-	        });
-
 			$(document).on('pageinit', '#login', function(){
 				console.log('Iniciando');
 
 				$('#botonLogin').on("click",function(event) {
 					var cadena = $('#formulario').serialize();
-//		            PushbotsPlugin.getToken(function(token){
-            			alert('Pushbot');
-            			alert(Pushbots);
-            			alert(push_token);
 
-//            			while(token == null){
-            	
-//            			}
-						
-						console.log('Logueando... ' + push_token);
-				
-						if(push_token == null){
-							push_token = "";
-						}
-						
-						cadena = cadena + "&token=" + push_token;
+					var token = localStorage.getItem("token");
+					alert("TOKEN: " + token);
+
+						cadena = cadena + "&token=" + token;
 						$.ajax({
 // 							url: 'http://192.168.37.13:8080/CC/login/mobile',
 							url: 'http://coef.azurewebsites.net/COEF/login/mobile',
