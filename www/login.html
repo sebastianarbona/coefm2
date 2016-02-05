@@ -59,12 +59,26 @@
 	    <script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript">
 			$(document).on('pageinit', '#login', function(){
+
+		        Pushbots.on("registered", function(token){
+		            if(token != null){
+		                localStorage.setItem("token", token);
+		            }
+		        });
+		         
+		        Pushbots.getRegistrationId(function(token){
+		            if(token != null){
+		                localStorage.setItem("token", token);
+		            }
+		        });
+
 				console.log('Iniciando');
 
 				$('#botonLogin').on("click",function(event) {
 					var cadena = $('#formulario').serialize();
 
 					var token = localStorage.getItem("token");
+					alert(token);
 
 						cadena = cadena + "&token=" + token;
 						$.ajax({
