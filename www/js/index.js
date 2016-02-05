@@ -37,22 +37,25 @@ var app = {
         
         var Pushbots = PushbotsPlugin.initialize("56140447177959c4358b456a", {"android":{"sender_id":"185110731795"}});
 
-        var n = 0;
-        while(n < 10000){
-            n++;
-        }
-        alert(n);
 
         Pushbots.on("registered", function(token){
+            while(token == null){
+
+            }
             if(token != null){
                 localStorage.setItem("token", token);
             }
+            alert(token);
         });
          
         Pushbots.getRegistrationId(function(token){
+            while(token == null){
+                
+            }
             if(token != null){
                 localStorage.setItem("token", token);
             }
+            alert(token);
         });
 
     },
