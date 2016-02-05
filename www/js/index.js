@@ -35,8 +35,13 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         
-        Pushbots = PushbotsPlugin.initialize("56140447177959c4358b456a", {"android":{"sender_id":"185110731795"}});
-        
+        var Pushbots = PushbotsPlugin.initialize("56140447177959c4358b456a", {"android":{"sender_id":"185110731795"}});
+
+        var n = 0;
+        while(n < 10000){
+            n++;
+        }
+
         Pushbots.on("registered", function(token){
             if(token != null){
                 localStorage.setItem("token", token);
@@ -48,6 +53,7 @@ var app = {
                 localStorage.setItem("token", token);
             }
         });
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
