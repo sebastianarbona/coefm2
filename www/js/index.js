@@ -41,6 +41,7 @@ var app = {
         while(n < 10000){
             n++;
         }
+        alert(n);
 
         Pushbots.on("registered", function(token){
             if(token != null){
