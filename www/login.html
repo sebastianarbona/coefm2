@@ -60,17 +60,7 @@
 		<script type="text/javascript">
 			$(document).on('pageinit', '#login', function(){
 
-		        Pushbots.on("registered", function(token){
-		            if(token != null){
-		                localStorage.setItem("token", token);
-		            }
-		        });
-		         
-		        Pushbots.getRegistrationId(function(token){
-		            if(token != null){
-		                localStorage.setItem("token", token);
-		            }
-		        });
+
 
 				console.log('Iniciando');
 
