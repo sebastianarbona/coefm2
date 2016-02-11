@@ -154,7 +154,7 @@
 				        }
 			        },
 		        	error: function (request,error) {
-	            		bootbox.alert('Ha ocurrido un error de red, intente nuevamente por favor!');
+	            		bootbox.alert('Ha ocurrido un error de red, intente nuevamente por favor! ' + error);
 		        	}
 				});
 			}
@@ -233,7 +233,7 @@
 	        				$('#body-'+id).append('</tbody>');
 				        },
 			        	error: function (request,error) {
-		            		bootbox.alert('Ha ocurrido un error de red, intente nuevamente por favor!');
+		            		bootbox.alert('Ha ocurrido un error de red, intente nuevamente por favor! ' + error);
 			        	}
 					});
 					if(problemas == true){

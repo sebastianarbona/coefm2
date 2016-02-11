@@ -141,13 +141,23 @@
 												  '</div>');
 			        			$('#body-'+row.id).remove();
 			        			$('#body-'+row.id).append('<tbody id="body-'+row.id+'">');
+
+			        			if(row.problemas == true){
+									$("#table-"+row.id).removeClass("table-theme").addClass("table table-bordered table-hover table-striped table-danger");
+									$("#panel-"+row.id).removeClass("panel-theme").addClass("panel rounded shadow panel-danger");
+									$("#panel-"+row.id).css("border-bottom", "10px solid #e53b1f").css("border-right", "1px solid #e53b1f").css("border-left", "1px solid #e53b1f");
+								}else if(row.problemas == false){
+						      		$("#table-"+row.id).removeClass("table-theme").addClass("table table-bordered table-hover table-striped table-success");
+						      		$("#panel-"+row.id).removeClass("panel-theme").addClass("panel rounded shadow panel-success");
+									$("#panel-"+row.id).css("border-bottom", "10px solid #7ab03f").css("border-right", "1px solid #7ab03f").css("border-left", "1px solid #7ab03f");
+								}
 							});
 				        }else{
 		            		bootbox.alert('No hay ningun pedido cargado.');
 				        }
 			        },
 		        	error: function (request,error) {
-	            		bootbox.alert('Ha ocurrido un error de red, intente nuevamente por favor!');
+	            		bootbox.alert('Ha ocurrido un error de red, intente nuevamente por favor! ' + error);
 		        	}
 				});
 			}
@@ -211,7 +221,7 @@
 						 			    }
 				 					},
 				 					error: function (request,error) {
-					            		bootbox.alert('Ha ocurrido un error de red, intente nuevamente por favor!');
+					            		bootbox.alert('Ha ocurrido un error de red, intente nuevamente por favor! ' + error);
 						        	} 
 				 				});
 	                        }
@@ -232,7 +242,7 @@
 			        	$(".th-"+id).css('background', '#4B610B').css('color', 'white');		
 			        },
 		        	error: function (request,error) {
-	            		bootbox.alert('Ha ocurrido un error de red, intente nuevamente por favor!');
+	            		bootbox.alert('Ha ocurrido un error de red, intente nuevamente por favor! ' + error);
 		        	}
 				});	
 			}
@@ -300,7 +310,7 @@
 	        				$('#body-'+id).append('</tbody>');
     			        },
 			        	error: function (request,error) {
-		            		bootbox.alert('Ha ocurrido un error de red, intente nuevamente por favor!');
+		            		bootbox.alert('Ha ocurrido un error de red, intente nuevamente por favor! ' + error);
 			        	}
 					});
 				}
