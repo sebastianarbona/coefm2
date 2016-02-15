@@ -63,14 +63,12 @@
 			<br />		
 			
 			<div data-role="footer" class="ui-bar" style="font-size: 15px; background: white none repeat scroll 0% 0%; color: black; font-weight: 500 ! important;">
-				Desarrollado x Grupo Core - Version 2.0
+				Desarrollado x Grupo Core - <a href="#" onclick="version()" style="border: medium none ! important; background: transparent none repeat scroll 0% 0% ! important; box-shadow: none ! important;">Version 2.0</a>
 			</div>
 		</div>
 		<script>
 			$.mask.definitions['~']='[+-]';
 			$('.input-mask-date').mask('99/99/99');
-//			var idAdmin = "1";
-//			$("#idAdmin").val("1");
  			$("#idAdmin").val(localStorage.getItem("idAdmin"));
 			var idAdmin = localStorage.getItem("idAdmin");
 			
@@ -80,6 +78,14 @@
 				window.location.replace('index.html');
 			}
 			
+
+			function version(){
+				var user = localStorage.getItem("usuario");
+				var token = localStorage.getItem("token");
+	            bootbox.alert('Datos de Version: <br/>User: ' + user + ' <br/>Token: ' + token);
+
+			}
+
 			function fechaLimpia(){
 				var fecha = $('#fecha').val();
 				$('#fecha').val("");

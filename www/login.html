@@ -75,6 +75,11 @@
 				$('#botonLogin').on("click",function(event) {
 					var cadena = $('#formulario').serialize();
 
+
+					var user = $('#usuario').val();
+					localStorage.setItem("usuario");
+
+
 					var token = localStorage.getItem("token");
 					//alert(token);
 
