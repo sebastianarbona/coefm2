@@ -39,26 +39,26 @@ var app = {
 
 
         Pushbots.on("registered", function(token){
-            while(token == null){
+            while(token == null || token == ""){
 
             }
-            if(token != null){
+            if(token != null  && token != ""){
                 localStorage.setItem("token", token);
             }
             //alert(token);
         });
          
         Pushbots.getRegistrationId(function(token){
-            while(token == null){
+            while(token == null || token == ""){
                 
             }
-            if(token != null){
+            if(token != null && token != ""){
                 localStorage.setItem("token", token);
             }
             //alert(token);
         });
 
-        Pushbots.resetBadge();
+
 
     },
     // Update DOM on a Received Event
