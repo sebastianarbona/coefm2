@@ -22,36 +22,44 @@
    	    <script src="js/bootbox.min.js"><!--  --></script>    
 	</head>
 	<body>
-		<div data-role="page" id="login" class="main-content animated fadeInLeft" style="background: transparent url('img/fondo.jpg') repeat scroll 0% 0%">
-			<div style="background: transparent url('img/fondo.jpg') repeat scroll 0% 0%;; border-color: black;">
-				<div class="row">
-					<span class="col-lg-11 col-md-11 col-sm-11 col-xs-11"><img src="img/logo.png" style="max-width: 100%; margin-left: 4%"/></span>
+		<div data-role="page" id="login" class="main-content animated fadeInLeft" style="background: white;">
+			<div data-role="header">
+				<h1 style="font-size:18px;">COEF</h1>
+    		</div>
+			
+			<div class="ui-content" style="padding:0px; margin: 0px">
+				<div style="background: url('img/fondo.jpg'); border-color: transparent; padding:5px;">
+					<div class="row" style="margin-left: 1%">
+						<span class="col-lg-11 col-md-11 col-sm-11 col-xs-10"><img src="img/logo.png" style="max-width: 100%"/></span>
+					</div>
 				</div>
+
+				<div class="panel rounded shadow panel-theme" style="border-color: black; margin: 5% 4%">
+					<div class="panel-heading">
+						<div style="display: block; font-size: 13px; margin-bottom: 10px; margin-top: 10px; position: relative;
+		    				text-align: center; text-transform: uppercase;">
+							<span>- Ingrese sus datos de acceso. -</span>
+						</div>
+						<div class="clearfix">
+							<!--   -->
+						</div>
+					</div>
+					<div class="panel-body" style="background: rgba(234, 234, 236, 0.72); border-bottom: 10px solid #a58674; border-top: 10px solid #a58674;
+						border-right: 1px solid #a58674;border-left: 1px solid #a58674">
+						<form id="formulario">
+							<input name="usuario" id="usuario" placeholder="Usuario" type="text" style='width:100%; height:50px'/>
+			            			<input type="password" name="password" id="password" placeholder="Contrase&ntilde;a" style='width:100%; height:50px'/>
+							
+							<h2 align=center>
+								<input type="button" value="Ingresar" class="btn btn-theme shadow rounded" id="botonLogin" style="width: 100%">
+							</h2>
+			        		</form>
+					</div>
+				</div><!-- /.panel-body -->
 			</div>
-			<div class="panel rounded shadow panel-theme" style="border-color: black; margin: 5% 4%">
-				<div class="panel-heading">
-					<div style="display: block; font-size: 13px; margin-bottom: 10px; margin-top: 10px; position: relative;
-	    				text-align: center; text-transform: uppercase;">
-						<span>- Ingrese sus datos de acceso. -</span>
-					</div>
-					<div class="clearfix">
-						<!--   -->
-					</div>
-				</div>
-				<div class="panel-body" style="background: rgba(234, 234, 236, 0.72); border-bottom: 10px solid #a58674; border-top: 10px solid #a58674;
-					border-right: 1px solid #a58674;border-left: 1px solid #a58674">
-					<form id="formulario">
-						<input name="usuario" id="usuario" placeholder="Ingrese Usuario..." type="text" style='width:100%; height:50px'/>
-		            			<input type="password" name="password" id="password" placeholder="Ingrese Contrase&ntilde;a" style='width:100%; height:50px'/>
-						
-						<h2 align=center>
-							<input type="button" value="Ingresar" class="btn btn-theme shadow rounded" id="botonLogin" style="width: 100%">
-						</h2>
-		        		</form>
-				</div>
-			</div><!-- /.panel-body -->
-			<div data-role="footer" class="ui-bar" style="text-align: right; background: white none repeat scroll 0% 0%; color: black;">
-				COEF Mobile - Version 2.0
+			<br />		
+			<div data-role="footer" class="ui-bar" style="font-size: 15px; background: white none repeat scroll 0% 0%; color: black; font-weight: 500 ! important;">
+				Desarrollado x Grupo Core - Version 2.0
 			</div>
 		</div> 
 		
@@ -68,7 +76,7 @@
 					var cadena = $('#formulario').serialize();
 
 					var token = localStorage.getItem("token");
-					alert(token);
+					//alert(token);
 
 						cadena = cadena + "&token=" + token;
 						$.ajax({

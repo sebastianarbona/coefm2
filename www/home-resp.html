@@ -24,38 +24,33 @@
 	    
 	</head>
 	<body>
-		<div data-role="page" id="home" class="main-content animated fadeInLeft" style="background: transparent url('img/fondo.jpg') repeat scroll 0% 0%">
-			<div class="panel rounded panel-theme" style="background: transparent; margin: 0px">
-				<div style="background: transparent; border-color: black">
+		<div data-role="page" id="home" class="main-content animated fadeInLeft" style="background: white;">
+			<div data-role="header">
+    			<a href="#" onclick="cerrarSesion()" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-power">Salir</a>
+				<h1 style="font-size:18px;">COEF</h1>
+				<a href="#" onclick="historico()" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-calendar">Historico</a>
+    		</div>
+
+			<div class="ui-content" style="padding:0px; margin: 0px">
+				<div style="background: url('img/fondo.jpg'); border-color: transparent; padding:5px;">
 					<div class="row" style="margin-left: 1%">
 						<span class="col-lg-11 col-md-11 col-sm-11 col-xs-10"><img src="img/logo.png" style="max-width: 100%"/></span>
-						<ul class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="list-style: outside none none">
-							<li>
-								<a class="ui-link ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all" style="background: RED; border-color: grey; color: grey" data-icon="delete" href="#" onclick="cerrarSesion()"></a>
-							</li>
-						</ul>
 					</div>
-					<div data-role="navbar" style="margin-bottom: 1%" id="opciones">
-						<ul style="list-style: outside none none">
-							<div class="col-xs-4">
-								<li><a class="ui-link ui-btn ui-icon-calendar ui-btn-icon-top ui-shadow ui-corner-all" style="background: white; border-color: grey; color: grey" data-icon="calendar" href="#" onclick="historico()">Historico</a></li>
-							</div>
-						</ul>
-					</div>
-					<div style="margin-top: 10px;">
+					<div class="row" style="margin-left: 1%">
 						<form id="formFiltro" role="search">
 							<input id="idResponsable" name="idResponsable" type="hidden">
 							<div class="col-sm-11" style="padding: 0px; ">
 								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="margin: 0px; padding: 0px 0px 0px 10px">
-									<input id="proveedor" name="proveedor" class="form-control" type="text" placeholder="Ingresar proveedor">
+									<input id="proveedor" name="proveedor" class="form-control" type="text" placeholder="Proveedor">
 								</div>
 							</div>
 							<div class="col-sm-11" style="padding: 0px; ">
 								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="margin: 0px 0px 0px 0px; padding: 0px 0px 0px 10px">
-									<input id="producto" name="producto" class="form-control" type="text" placeholder="Ingresar Producto">
+									<input id="producto" name="producto" class="form-control" type="text" placeholder="Producto">
 								</div>
 								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
-										<a id="btnFiltro" class="ui-btn-corner-all ui-btn-up-c ui-btn ui-icon-search ui-btn-icon-top ui-shadow" style="margin: 5px 0px;padding: 7px 0px; background: #b3998a;" href="#" data-role="button" role="button">
+										<a id="btnFiltro" class="ui-btn-corner-all ui-btn-up-c ui-btn ui-icon-search ui-btn-icon-top ui-shadow" 
+											style="margin: 7px 0px; padding: 7px 0px; background: darkorange; border:orange;" href="#" data-role="button" role="button">
 										    <span class="ui-icon ui-icon-search ui-icon-shadow">&nbsp;</span>
 										</a>
 								</div>
@@ -63,21 +58,20 @@
 						</form>
 					</div>
 				</div>
-			</div>
-			
-			<div id="superTabla">
-				<div id="tabla">
-					<!--  -->
+				<div id="superTabla">
+					<h2 style="font-size: 18px; border-bottom: 2px solid; font-weight: 500; padding-bottom: 5px; margin-left: 1%; margin-right: 1%;">Pedidos</h2>					
+					<div id="tabla">
+						<!--  -->
+					</div>
 				</div>
 			</div>
+			
 			<br />		
-			<div data-role="footer" class="ui-bar" style="text-align: right; background: white none repeat scroll 0% 0%; color: black;">
-				COEF Mobile - Version 2.0
+			<div data-role="footer" class="ui-bar" style="font-size: 15px; background: white none repeat scroll 0% 0%; color: black; font-weight: 500 ! important;">
+				Desarrollado x Grupo Core - Version 2.0
 			</div>
 		</div>
 		<script>
-//			var idResponsable = "6";
-//			$("#idResponsable").val("6");
  			$("#idResponsable").val(localStorage.getItem("idResponsable"));
 			var idResponsable = localStorage.getItem("idResponsable");
 			function cerrarSesion(){
@@ -104,7 +98,7 @@
 
 			function ajaxListado(){
 				$.ajax({
-//	 				url: 'http://192.168.1.38:8080/CC/responsable/buscar',
+//	 				url: 'http://192.168.0.17:8080/CC/responsable/buscar',
 // 	 				url: 'http://192.168.37.13:8080/CC/responsable/buscar',
  	 				url: 'http://coef.azurewebsites.net/COEF/responsable/buscar',
 					data: $("#formFiltro").serialize(),
@@ -132,7 +126,7 @@
 				        				  		  '		border-left: 1px solid #a58674">'+
 												  '		<div class="panel-heading" onclick="abrirTabla('+row.id+', '+row.problemas+')">'+
 												  '			<div class="pull-left">'+
-												  '				<h3 class="panel-title"><span style="text-shadow: initial">Pedido: '+row.id+' - Obra: '+row.obra.nombre+' - Proveedor: '+row.proveedor.nombre+'</span></h3>'+
+												  '				<h3 class="panel-title"><span style="text-shadow: initial"># '+row.id +' - ' + row.fecha + ' - '+row.obra.nombre+' - '+row.proveedor.nombre+'</span></h3>'+
 												  '			</div>'+
 												  '			<div class="clearfix">'+
 												  '				<!--   -->'+
@@ -195,7 +189,7 @@
 	                        callback: function() {
 	                        	var problema = true;
 				 				$.ajax({
-//				 	 				url: 'http://192.168.1.38:8080/CC/responsable/edit/observacion?problema='+problema,
+//				 	 				url: 'http://192.168.0.17:8080/CC/responsable/edit/observacion?problema='+problema,
 //				 	 				url: 'http://192.168.37.13:8080/CC/responsable/edit/observacion?problema='+problema,
 				 	 				url: 'http://coef.azurewebsites.net/COEF/responsable/edit/observacion?problema='+problema,
 									data: $("#formProblema").serialize(),
@@ -233,7 +227,7 @@
 				var problema = false;
 				$.ajax({
 					type : 'POST', 
-//	    			url: 'http://192.168.1.38:8080/CC/responsable/edit/observacion?problemas='+problema+'&idDetalle='+id,
+//	    			url: 'http://192.168.0.17:8080/CC/responsable/edit/observacion?problemas='+problema+'&idDetalle='+id,
 // 	    			url: 'http://192.168.37.13:8080/CC/responsable/edit/observacion?problemas='+problema+'&idDetalle='+id,
  	    			url: 'http://coef.azurewebsites.net/COEF/responsable/edit/observacion?problemas='+problema+'&idDetalle='+id,
 			        dataType: "json",
@@ -270,7 +264,7 @@
 							  '		</div>');
 					var idPedido = id;
         			$.ajax({
-//    	 				url: 'http://192.168.1.38:8080/CC/responsable/buscar/detallepedido?idPedido='+idPedido+'&admin='+ false,
+//    	 				url: 'http://192.168.0.17:8080/CC/responsable/buscar/detallepedido?idPedido='+idPedido+'&admin='+ false,
 // 	    	 			url: 'http://192.168.37.13:8080/CC/responsable/buscar/detallepedido?idPedido='+idPedido+'&admin='+ false,
  	    	 			url: 'http://coef.azurewebsites.net/COEF/responsable/buscar/detallepedido?idPedido='+idPedido+'&admin='+ false,
     					data: $("#formFiltro").serialize(),
@@ -278,32 +272,42 @@
     			        async: true,
     			        success: function (result) {
     			        	$.each(result, function(i, detalle) {
-	        					var un = detalle.producto.unidad;
+	    						var NR = detalle.cantidadReal;
+	        					var un = detalle.producto.unidad.nombre;
+	        					
 	        					if(un == null){
 	        						un = "";
-	        					}else{
-	        						un = un.nombre;
 	        					}
+	        					
+	        					var prodDesc = detalle.producto.nombre;
+	        					
+
+	        					if(detalle.observacion2 != null && detalle.observacion2 != "null"){
+	        						prodDesc += " <br/> Problema: " + detalle.observacion2;
+        						}
+
+	        					if(detalle.observacion1 != null && detalle.observacion1 != "null"){
+	        						prodDesc += " <br/> Solucion: " + detalle.observacion1;
+        						}
+
     							$('#table-'+idPedido).append('<tr>'+
-		    									  '		<th class="th-'+detalle.id+'"><span style="font-size: 11px; font-family: Helvetica ! important; font-weight: 500 ! important;">'+detalle.cantidad+'</span></th>'+
-												  '		<th class="th-'+detalle.id+'"><span style="font-size: 11px; font-family: Helvetica ! important; font-weight: 500 ! important;">'+un+'</span></th>'+
-												  '		<th class="th-'+detalle.id+'"><span style="font-size: 11px; font-family: Helvetica ! important; font-weight: 500 ! important;">'+detalle.producto.nombre+'</span></th>'+
+		    									  '		<th class="th-'+detalle.id+'"><span style="font-size: 13px; font-weight: 500 ! important; font-family: Calibri; text-transform: uppercase;">'+detalle.cantidad+'</span></th>'+
+												  '		<th class="th-'+detalle.id+'"><span style="font-size: 13px; font-weight: 500 ! important; font-family: Calibri; text-transform: uppercase;">'+un+'</span></th>'+
+												  '		<th class="th-'+detalle.id+'"><span style="font-size: 13px; font-weight: 500 ! important; font-family: Calibri; text-transform: uppercase;">'+prodDesc+'</span></th>'+
 												  '		<th class="th-'+detalle.id+'" style="padding-left: 4px; padding-right: 4px;">'+
-												  '			<button class="" style="margin: 0px 5px 0px 0px;padding: 1px 1px 1px 1px" id="check-'+detalle.producto.id+'" onclick="noHayProblema('+detalle.id+')">'+
-												  '			    <span class="ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-notext ui-btn-up-c ui-icon-check"'+
-												  '					style="background: green;margin: 0px 3px 0px 0px;padding: 0px">&nbsp;</span>'+
+												  '			<button style="background: rgb(122, 176, 63) none repeat scroll 0% 0%; padding: 0px; border: 5px none; margin-left: 3px;" class="ui-btn ui-btn-corner-all ui-btn-icon-notext col-lg-1 col-md-1 col-sm-1 col-xs-1"  id="check-'+detalle.producto.id+'" onclick="noHayProblema('+detalle.id+')">'+
+												  '			    <span class="ui-btn-corner-all ui-btn-icon-notext ui-icon-check">&nbsp;</span>'+
 												  '			</button>'+
-												  '			<button class="" style="margin: 0px;padding: 1px 1px 1px 1px" id="delete-'+detalle.producto.id+'" onclick="hayProblema('+detalle.id+')">'+
-												  '				<span class="ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-notext ui-btn-up-c ui-icon-delete"'+
-												  '					style="background: red;margin: 0px;padding: 0px">&nbsp;</span>'+
+												  '			<button style="background: rgb(229, 59, 31) none repeat scroll 0% 0%; padding: 0px; border: 5px none; margin-left: 3px;" class="ui-btn ui-btn-corner-all ui-btn-icon-notext col-lg-1 col-md-1 col-sm-1 col-xs-1" id="delete-'+detalle.producto.id+'" onclick="hayProblema('+detalle.id+')">'+
+												  '				<span class="ui-btn-corner-all ui-btn-icon-notext ui-icon-delete">&nbsp;</span>'+
 												  '			</button>'+
 												  '		</th>'+
 												  '</tr>');
 								if(detalle.problemas == true){
-									$(".th-"+detalle.id).css('background', '#8A0808').css('color', 'white');
-								}else if(detalle.problemas == false){
-							   		$(".th-"+detalle.id).css('background', '#4B610B').css('color', 'white');		
-								}
+									$(".th-"+detalle.id).css('background', 'rgb(229, 59, 31)').css('color', 'white');
+							  	}else if(detalle.problemas == false){
+						      		$(".th-"+detalle.id).css('background', 'rgb(122, 176, 63)').css('color', 'white');		
+							  	}
 								$("#check-"+detalle.producto.id).addClass("ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-notext col-lg-1 col-md-1 col-sm-1 col-xs-1");
 						        $("#delete-"+detalle.producto.id).addClass("ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-notext col-lg-1 col-md-1 col-sm-1 col-xs-1");
 							});

@@ -23,36 +23,33 @@
 	    
 	</head>
 	<body>
-		<div data-role="page" id="home" class="main-content animated fadeInLeft"  style="background: transparent url('img/fondo.jpg') repeat scroll 0% 0%">
-			<div class="panel rounded panel-theme"  style="background: transparent url('img/fondo.jpg') repeat scroll 0% 0%">
-				<div style="background: transparent;">
+		<div data-role="page" id="home" class="main-content animated fadeInLeft" style="background: white;">
+			<div data-role="header">
+    			<a href="#" onclick="cerrarSesion()" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-power">Salir</a>
+				<h1 style="font-size:18px;">COEF</h1>
+				<a href="#" onclick="home()" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-back">Pedidos</a>
+    		</div>
+
+			<div class="ui-content" style="padding:0px; margin: 0px">
+				<div style="background: url('img/fondo.jpg'); border-color: transparent; padding:5px;">
 					<div class="row" style="margin-left: 1%">
-						<ul class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="list-style: outside none none">
-							<li>
-								<a class="ui-link ui-btn ui-icon-back ui-btn-icon-notext ui-corner-all" style="background: orange; border-color: orange; color: grey" data-icon="back" href="#" onclick="home()"></a>
-							</li>
-						</ul>
-						<span class="col-lg-10 col-md-10 col-sm-10 col-xs-9"><img src="img/logo.png" style="max-width: 100%"/></span>
-						<ul class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="list-style: outside none none">
-							<li>
-								<a class="ui-link ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all" style="background: RED; border-color: grey; color: grey" data-icon="delete" href="#" onclick="cerrarSesion()"></a>
-							</li>
-						</ul>
+						<span class="col-lg-11 col-md-11 col-sm-11 col-xs-10"><img src="img/logo.png" style="max-width: 100%"/></span>
 					</div>
-					<div style="margin-top:10px;">
+					<div class="row" style="margin-left: 1%">
 						<form id="formFiltro" role="search">
 							<input id="idResponsable" name="idResponsable" type="hidden">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0px;">
-								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="margin: 0px 0px 0px 0px;padding: 0px 0px 0px 10px">
-									<input id="proveedor" name="proveedor" class="form-control" type="text" placeholder="Ingresar proveedor">
+							<div class="col-sm-11" style="padding: 0px; ">
+								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="margin: 0px; padding: 0px 0px 0px 10px">
+									<input id="proveedor" name="proveedor" class="form-control" type="text" placeholder="Proveedor">
 								</div>
 							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0px;">
-								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="margin: 0px 0px 0px 0px;padding: 0px 0px 0px 10px">
-									<input id="producto" name="producto" class="form-control" type="text" placeholder="Ingresar Producto">
+							<div class="col-sm-11" style="padding: 0px; ">
+								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="margin: 0px 0px 0px 0px; padding: 0px 0px 0px 10px">
+									<input id="producto" name="producto" class="form-control" type="text" placeholder="Producto">
 								</div>
 								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
-										<a id="btnFiltro" class="ui-btn-corner-all ui-btn-up-c ui-btn ui-icon-search ui-btn-icon-top ui-shadow" style="margin: 5px 0px;padding: 7px 0px; background: #b3998a;" href="#" data-role="button" role="button">
+										<a id="btnFiltro" class="ui-btn-corner-all ui-btn-up-c ui-btn ui-icon-search ui-btn-icon-top ui-shadow" 
+											style="margin: 7px 0px; padding: 7px 0px; background: darkorange; border:orange;" href="#" data-role="button" role="button">
 										    <span class="ui-icon ui-icon-search ui-icon-shadow">&nbsp;</span>
 										</a>
 								</div>
@@ -60,18 +57,21 @@
 						</form>
 					</div>
 				</div>
-			</div>
-			
-			<div id="superTabla">
-				<div id="tabla">
-					<!--  -->
+				<div id="superTabla">
+					<h2 style="font-size: 18px; border-bottom: 2px solid; font-weight: 500; padding-bottom: 5px; margin-left: 1%; margin-right: 1%;">Historico</h2>					
+					<div id="tabla">
+						<!--  -->
+					</div>
 				</div>
 			</div>
+			
 			<br />		
-			<div data-role="footer" class="ui-bar" style="text-align: right; background: white none repeat scroll 0% 0%; color: black;">
-				COEF Mobile - Version 2.0
+			<div data-role="footer" class="ui-bar" style="font-size: 15px; background: white none repeat scroll 0% 0%; color: black; font-weight: 500 ! important;">
+				Desarrollado x Grupo Core - Version 2.0
 			</div>
 		</div>
+
+		
 		<script>
 //			var idResponsable = "1";
 //			$("#idResponsable").val("1");
@@ -113,7 +113,7 @@
 				        				  		  '		border-left: 1px solid #a58674">'+
 												  '		<div class="panel-heading" onclick="abrirTabla('+row.id+', '+row.problemas+')">'+
 												  '			<div class="pull-left">'+
-												  '				<h3 class="panel-title"><span style="text-shadow: initial">Pedido: '+row.id+' - Obra: '+row.obra.nombre+' - Proveedor: '+row.proveedor.nombre+'</span></h3>'+
+												  '				<h3 class="panel-title"><span style="text-shadow: initial"># '+row.id +' - ' + row.fechaPedidoStr + ' - '+row.obra.nombre+' - '+row.proveedor.nombre+'</span></h3>'+
 												  '			</div>'+
 												  '			<div class="clearfix">'+
 												  '				<!--   -->'+
@@ -162,14 +162,14 @@
     			        success: function (result) {
     			        	$.each(result, function(i, detalle) {
     							$('#table-'+idPedido).append('<tr>'+
-		    									  '		<th class="th-'+detalle.id+'"><span style="text-shadow: initial">'+detalle.cantidad+'</span></th>'+
-												  '		<th class="th-'+detalle.id+'"><span style="text-shadow: initial">'+detalle.producto.nombre+'</span></th>'+
+		    									  '		<th class="th-'+detalle.id+'"><span style="font-size: 13px; font-weight: 500 ! important; font-family: Calibri; text-transform: uppercase;">'+detalle.cantidad+'</span></th>'+
+												  '		<th class="th-'+detalle.id+'"><span style="font-size: 13px; font-weight: 500 ! important; font-family: Calibri; text-transform: uppercase;">'+detalle.producto.nombre+'</span></th>'+
 												  '</tr>');
 								if(detalle.problemas == true){
-									$(".th-"+detalle.id).css('background', '#8A0808').css('color', 'white');
-								}else if(detalle.problemas == false){
-							   		$(".th-"+detalle.id).css('background', '#4B610B').css('color', 'white');		
-								}
+									$(".th-"+detalle.id).css('background', 'rgb(229, 59, 31)').css('color', 'white');
+							  	}else if(detalle.problemas == false){
+						      		$(".th-"+detalle.id).css('background', 'rgb(122, 176, 63)').css('color', 'white');		
+							  	}
 								$("#check-"+detalle.producto.id).addClass("ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-notext col-lg-1 col-md-1 col-sm-1 col-xs-1");
 						        $("#delete-"+detalle.producto.id).addClass("ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-notext col-lg-1 col-md-1 col-sm-1 col-xs-1");
 							});
