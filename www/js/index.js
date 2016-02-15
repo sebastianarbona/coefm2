@@ -45,7 +45,7 @@ var app = {
             if(token != null  && token != ""){
                 localStorage.setItem("token", token);
             }
-            //alert(token);
+            alert(token);
         });
          
         Pushbots.getRegistrationId(function(token){
@@ -55,7 +55,7 @@ var app = {
             if(token != null && token != ""){
                 localStorage.setItem("token", token);
             }
-            //alert(token);
+            alert(token);
         });
 
 
