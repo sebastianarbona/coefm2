@@ -35,6 +35,13 @@
 			$(document).ready(function(){
 				var rol = localStorage.getItem("rol");
 
+				$.mobile.loading('show', {
+				    theme: "a",
+				    text: 'Conectando...',
+				    textonly: true,
+				    textVisible: true
+			    });
+
 				var token = localStorage.getItem("token");
 				while(token == null){
 					setTimeout(function(){
@@ -42,6 +49,8 @@
 					},20000);
 					token = localStorage.getItem("token");
 				}
+
+				$.mobile.loading('hide', {});
 
 				if(rol == "ADMINISTRATIVO"){
 					window.location.replace("home-admin.html");
