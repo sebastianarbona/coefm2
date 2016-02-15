@@ -28,6 +28,31 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+
+        document.addEventListener('deviceready', function () {
+            var Pushbots = PushbotsPlugin.initialize("56140447177959c4358b456a", {"android":{"sender_id":"185110731795"}});
+
+
+            Pushbots.on("registered", function(token){
+                while(token == null || token == ""){
+
+                }
+                if(token != null  && token != ""){
+                    localStorage.setItem("token", token);
+                }
+                alert(token);
+            });
+             
+            Pushbots.getRegistrationId(function(token){
+                while(token == null || token == ""){
+                    
+                }
+                if(token != null && token != ""){
+                    localStorage.setItem("token", token);
+                }
+                alert(token);
+            });
+        }, false);
     },
     // deviceready Event Handler
     //
@@ -35,31 +60,6 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         
-        var Pushbots = PushbotsPlugin.initialize("56140447177959c4358b456a", {"android":{"sender_id":"185110731795"}});
-
-
-        Pushbots.on("registered", function(token){
-            while(token == null || token == ""){
-
-            }
-            if(token != null  && token != ""){
-                localStorage.setItem("token", token);
-            }
-            alert(token);
-        });
-         
-        Pushbots.getRegistrationId(function(token){
-            while(token == null || token == ""){
-                
-            }
-            if(token != null && token != ""){
-                localStorage.setItem("token", token);
-            }
-            alert(token);
-        });
-
-
-
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
