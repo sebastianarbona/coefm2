@@ -30,11 +30,7 @@ var app = {
         document.addEventListener('deviceready', function () {
             var Pushbots = PushbotsPlugin.initialize("56140447177959c4358b456a", {"android":{"sender_id":"185110731795"}});
 
-            setTimeout(function(){
-                console.log("Esperando...");
-            },20000);
-
-
+            
             Pushbots.debug(true);
 
             Pushbots.on("registered", function(token){

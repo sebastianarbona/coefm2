@@ -27,12 +27,12 @@
 		</div>
 
 		<div data-role="footer" class="ui-bar">
-			Conectando....
+			Conectando.....
 		</div>
 
 	    <script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript">
-			$(document).ready(function(){
+			$(document).on('pageinit', '#index', function(){
 				var rol = localStorage.getItem("rol");
 
 				if(rol == "ADMINISTRATIVO"){
