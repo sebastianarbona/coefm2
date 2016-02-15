@@ -27,30 +27,13 @@
 		</div>
 
 		<div data-role="footer" class="ui-bar">
-			COEF Mobile - Version 2.0
+			Conectando...
 		</div>
 
 	    <script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript">
-			$(document).ready(function(){
+			$(document).on('pageinit', '#page', function(){
 				var rol = localStorage.getItem("rol");
-
-				$.mobile.loading('show', {
-				    theme: "a",
-				    text: 'Conectando...',
-				    textonly: true,
-				    textVisible: true
-			    });
-
-				var token = localStorage.getItem("token");
-				while(token == null){
-					setTimeout(function(){
-						console.log("Esperando");
-					},20000);
-					token = localStorage.getItem("token");
-				}
-
-				$.mobile.loading('hide', {});
 
 				if(rol == "ADMINISTRATIVO"){
 					window.location.replace("home-admin.html");
