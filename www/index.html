@@ -37,6 +37,9 @@
 
 				var token = localStorage.getItem("token");
 				while(token == null){
+					setTimeout(function(){
+						console.log("Esperando");
+					},20000);
 					token = localStorage.getItem("token");
 				}
 

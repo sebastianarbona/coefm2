@@ -34,23 +34,11 @@ var app = {
 
 
             Pushbots.on("registered", function(token){
-                while(token == null || token == ""){
-
-                }
-                if(token != null  && token != ""){
-                    localStorage.setItem("token", token);
-                }
-                alert(token);
+                localStorage.setItem("token", token);
             });
              
             Pushbots.getRegistrationId(function(token){
-                while(token == null || token == ""){
-                    
-                }
-                if(token != null && token != ""){
-                    localStorage.setItem("token", token);
-                }
-                alert(token);
+                localStorage.setItem("token", token);
             });
         }, false);
     },
