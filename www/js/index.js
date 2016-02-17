@@ -34,10 +34,12 @@ var app = {
        //     Pushbots.debug(true);
 
             Pushbots.on("registered", function(token){
+                while(token == null){}
                 localStorage.setItem("token", token);
             });
              
             Pushbots.getRegistrationId(function(token){
+                while(token == null){}
                 localStorage.setItem("registro", token);
             });
 
