@@ -30,21 +30,18 @@ var app = {
         document.addEventListener('deviceready', function () {
             var Pushbots = PushbotsPlugin.initialize("56140447177959c4358b456a", {"android":{"sender_id":"185110731795"}});
        
-            var n = 0;
 
-            for(n = 0; n < 50000; n++){
-                console.log(n);
-            }
-            
-            Pushbots.debug(true);
+       //     Pushbots.debug(true);
 
             Pushbots.on("registered", function(token){
                 localStorage.setItem("token", token);
             });
              
             Pushbots.getRegistrationId(function(token){
-                localStorage.setItem("token", token);
+                localStorage.setItem("registro", token);
             });
+
+            Pushbots.resetBadge();
 
 
         }, false);
